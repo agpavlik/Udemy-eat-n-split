@@ -72,12 +72,13 @@ export default function App() {
         <FormSplitBill
           selectedFriend={selectedFriend}
           onSplitBill={handleSplitBill}
+          key={selectedFriend.id} //!!!
         />
       )}
     </div>
   );
 }
-
+S;
 function Button({ children, onClick }) {
   return (
     <button className="button" onClick={onClick}>
@@ -137,12 +138,7 @@ function FormAddFriend({ onAddFriend }) {
     if (!name || !image) return;
 
     const id = crypto.randomUUID();
-    const newFriend = {
-      name,
-      image: `${image}?=${id}`,
-      balance: 0,
-      id,
-    };
+    const newFriend = { name, image: `${image}?=${id}`, balance: 0, id };
     onAddFriend(newFriend);
 
     setName("");
